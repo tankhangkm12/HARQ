@@ -1,0 +1,57 @@
+# ==========================
+# 🧠 Python / Streamlit Project
+# ==========================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.env/
+.venv/
+venv/
+ENV/
+.HARQ/
+.HARQ.bak/
+
+# Installer / cache / test
+*.log
+*.tmp
+*.bak
+*.swp
+.DS_Store
+Thumbs.db
+
+# VS Code / IDE
+.vscode/
+.idea/
+
+# Jupyter / Streamlit cache
+.ipynb_checkpoints/
+.streamlit/cache/
+.streamlit/secrets.toml
+.streamlit/config.toml
+
+# Build / distribution
+build/
+dist/
+*.egg-info/
+.eggs/
+downloads/
+
+# System / Windows
+Desktop.ini
+
+# Python coverage and test outputs
+.coverage
+.coverage.*
+.pytest_cache/
+htmlcov/
+
+# ==========================
+# ✅ Keep only source & configs
+# ==========================
+!src/
+!app.py
+!requirements.txt
