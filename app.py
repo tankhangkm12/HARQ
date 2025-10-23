@@ -67,8 +67,8 @@ with st.sidebar:
         ]
     )
 
-    snr_min = st.number_input("Eb/N0 nhỏ nhất (dB)", value=float(cfg.get("snr_min",-8)), step=0.25)
-    snr_max = st.number_input("Eb/N0 lớn nhất (dB)", value=float(cfg.get("snr_max",12)), step=0.25)
+    snr_min = st.number_input("SNR nhỏ nhất (dB)", value=float(cfg.get("snr_min",-8)), step=0.25)
+    snr_max = st.number_input("SNR lớn nhất (dB)", value=float(cfg.get("snr_max",12)), step=0.25)
     snr_step = st.number_input("Bước thay đổi (dB)", value=float(cfg.get("snr_step",0.25)), step=0.05)
     Mmax = st.number_input("Số lần truyền tối đa M", 1, 10, int(cfg.get("Mmax",4)), 1)
     L_bits = st.number_input("Độ dài gói L (bit)", 1, 8192, int(cfg.get("L_bits",256)), 1)
@@ -91,7 +91,7 @@ with st.sidebar:
     mcs_text = st.text_input("Tập MCS (bits/s/Hz)", cfg.get("mcs_text","0.3 0.6 0.9 1.2 1.5 1.8"))
 
     st.subheader("Điểm tập trung")
-    snr_focus = st.slider("Eb/N0 dùng cho PMF/CDF (dB)", snr_min, snr_max, (snr_min+snr_max)/2, 0.25)
+    snr_focus = st.slider("SNR dùng cho PMF/CDF (dB)", snr_min, snr_max, (snr_min+snr_max)/2, 0.25)
     k_focus = st.number_input("Vòng k", 1, int(Mmax), 1)
     m_focus = st.number_input("m cho BLER^(m)", 1, int(Mmax), 1)
 
@@ -169,7 +169,7 @@ def pmf_focus():
             ir_pmf_from_bler_lists(bler_t2, float(erasure_eps), idx_focus),
             ir_pmf_from_bler_lists(bler_ah, float(erasure_eps), idx_focus))
 
-xlabel = "Eb/N0 (dB)"
+xlabel = "SNR (dB)"
 
 # ===================== VẼ BIỂU ĐỒ =====================
 if chart.startswith("Độ trễ trung bình"):
@@ -232,7 +232,7 @@ elif chart.startswith("Phân phối PMF"):
     if show_t1:  ax.stem(ks-0.5*off, PMF_t1, linefmt='C1-', markerfmt='C1o', basefmt=" ")
     if show_t2:  ax.stem(ks+0.5*off, PMF_t2, linefmt='C2-', markerfmt='C2o', basefmt=" ")
     if show_aharq: ax.stem(ks+1.5*off, PMF_ah, linefmt='C3-', markerfmt='C3o', basefmt=" ")
-    ax.set_xlabel(f"Số lần truyền N tại Eb/N0 = {snr_focus:.2f} dB")
+    ax.set_xlabel(f"Số lần truyền N tại SNR = {snr_focus:.2f} dB")
     ax.set_ylabel("PMF  P[N = k]"); ax.grid(True, ls=":"); ax.set_xticks(ks)
     ax.set_title("Phân phối xác suất")
     ax.legend(["ARQ","Type I","Type II","aHARQ"]); st.pyplot(fig)
@@ -246,7 +246,7 @@ elif chart.startswith("Hàm tích lũy"):
     ax.set_xlabel(xlabel)
     ax.set_ylabel("Xác suất tích lũy CDF P[N ≤ k]")
     ax.grid(True,ls=":")
-    ax.set_title(f"Hàm tích lũy CDF tại Eb/N0 = {snr_focus:.2f} dB")
+    ax.set_title(f"Hàm tích lũy CDF tại SNR = {snr_focus:.2f} dB")
     ax.legend()
     st.pyplot(fig)
 
