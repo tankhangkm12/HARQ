@@ -29,7 +29,7 @@ from src.io.config_loader import parse_config_file
 
 # ============= Giao diện Streamlit =============
 st.set_page_config(page_title="HARQ", layout="wide")
-st.title("🔁 ỨNG DỤNG MÔ PHỎNG LIÊN KẾT HARQ / ARQ")
+st.title("SO SÁNH & ĐÁNH GIÁ HARQ/ARQ")
 st.caption("Môi trường AWGN + BPSK. Các sơ đồ: ARQ, HARQ Type I (FEC), HARQ Type II (IR), aHARQ (AMC + IR).")
 
 # ================= Thanh bên =================
